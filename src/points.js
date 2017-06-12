@@ -3,7 +3,7 @@ var ext = require('./extent');
 module.exports.write = function writePoints(coordinates, extent, shpView, shxView) {
 
     var contentLength = 28, // 8 header, 20 content
-        fileLength = 100,
+        fileLength = 100, // starts with 100 as this is the fixed header length
         shpI = 0,
         shxI = 0;
 

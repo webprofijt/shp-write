@@ -17,6 +17,7 @@ function justCoords(t) {
     if (t.geometry.coordinates[0] !== undefined &&
         t.geometry.coordinates[0][0] !== undefined &&
         t.geometry.coordinates[0][0][0] !== undefined) {
+        // Unwraps rings
         return t.geometry.coordinates[0];
     } else {
         return t.geometry.coordinates;
