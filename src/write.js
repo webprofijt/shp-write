@@ -10,7 +10,8 @@ var types = require('./types'),
 var writers = {
     1: pointWriter,
     5: polyWriter,
-    3: polyWriter
+    3: polyWriter,
+    11: pointWriter
 };
 
 var recordHeaderLength = 8;
@@ -65,4 +66,8 @@ function writeExtent(extent, view) {
     view.setFloat64(44, extent.ymin, true);
     view.setFloat64(52, extent.xmax, true);
     view.setFloat64(60, extent.ymax, true);
+    view.setFloat64(68, extent.zmin, true);
+    view.setFloat64(76, extent.zmax, true);
+    view.setFloat64(84, 0.0, true); // Measure not supported, so always set to 0
+    view.setFloat64(92, 0.0, true); // Measure not supported, so always set to 0
 }

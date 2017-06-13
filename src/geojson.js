@@ -1,13 +1,16 @@
-module.exports.point = justType('Point', 'POINT');
+module.exports.point = justType('Point', 'POINT', false);
+module.exports.pointZ = justType('Point', 'POINTZ', true);
 module.exports.line = justType('LineString', 'POLYLINE');
 module.exports.polygon = justType('Polygon', 'POLYGON');
 
-function justType(type, TYPE) {
+function justType(type, TYPE, just3d) {
     return function(gj) {
-        var oftype = gj.features.filter(isType(type));
+        var ofType = gj.features.filter(isType(type));
+        var ofDimension = ofType.filter(isOfDimension(just3d));
+
         return {
-            geometries: (TYPE === 'POLYGON' || TYPE === 'POLYLINE') ? [oftype.map(justCoords)] : oftype.map(justCoords),
-            properties: oftype.map(justProps),
+            geometries: (TYPE === 'POLYGON' || TYPE === 'POLYLINE') ? [ofDimension.map(justCoords)] : ofDimension.map(justCoords),
+            properties: ofDimension.map(justProps),
             type: TYPE
         };
     };
@@ -30,4 +33,8 @@ function justProps(t) {
 
 function isType(t) {
     return function(f) { return f.geometry.type === t; };
+}
+
+function isOfDimension(just3d) {
+    return function(f) { return just3d ? f.geometry.coordinates.length === 3 : f.geometry.coordinates.length === 2 }
 }
