@@ -7,7 +7,7 @@ module.exports = function(gj, options) {
 
     var zip = new JSZip();
 
-    [geojson.point(gj), geojson.pointZ(gj), geojson.line(gj), geojson.polygon(gj)]
+    [geojson.point(gj), geojson.pointZ(gj), geojson.line(gj), geojson.lineZ(gj), geojson.polygon(gj), geojson.polygonZ(gj)]
         .forEach(function(l) {
         if (l.geometries.length && l.geometries[0].length) {
             write(

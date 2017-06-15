@@ -8,10 +8,12 @@ var types = require('./types'),
     polyWriter = require('./poly');
 
 var writers = {
-    1: pointWriter,
-    5: polyWriter,
-    3: polyWriter,
-    11: pointWriter
+    1: pointWriter,      // Point
+    3: polyWriter,       // PolyLine
+    5: polyWriter,       // Polygon
+    11: pointWriter,     // PointZ
+    13: polyWriter,      // PolyLineZ
+    15: polyWriter       // PolygonZ
 };
 
 var recordHeaderLength = 8;
