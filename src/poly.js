@@ -86,7 +86,7 @@ module.exports.write = function writePoints(geometries, extent, shpView, shxView
 
 module.exports.shpLength = function(geometries) {
     // NOTE: parts array length should not be included
-    // as this is calculated in shpwrite.js
+    // as this is calculated in write.js
 
     var flattened = justCoords(geometries),
         is3d = !!flattened[0][2];
