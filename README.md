@@ -1,8 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/mapbox/shp-write.svg?branch=master)](http://travis-ci.org/mapbox/shp-write)
 
-# shp-write
+# @webprofijt/shp-write
 
-Writes shapefile in pure javascript. Uses [dbf](https://github.com/tmcw/dbf)
+A fork of shp-write with support for 3D-shapes. Writes shapefile in pure javascript. Uses [dbf](https://github.com/tmcw/dbf)
 for the data component, and [jsZIP](http://stuk.github.io/jszip/) to generate
 ZIP file downloads in-browser.
 
@@ -20,7 +20,7 @@ Or in a browser
 
 * Requires a capable fancy modern browser with [Typed Arrays](http://caniuse.com/#feat=typedarrays)
   support
-* Geometries: Point, LineString, Polygon, MultiLineString, MultiPolygon
+* Geometries: Point, PointZ, LineString, LineStringZ, Polygon, PolygonZ, MultiLineString, MultiPolygon
 * Tabular-style properties export with Shapefile's field name length limit
 * Uses jsZip for ZIP files, but [compression is buggy](https://github.com/Stuk/jszip/issues/53) so it uses STORE instead of DEFLATE.
 
