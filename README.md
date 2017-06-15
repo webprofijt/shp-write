@@ -2,7 +2,11 @@
 
 # @webprofijt/shp-write
 
-A fork of shp-write with support for 3D-shapes. Writes shapefile in pure javascript. Uses [dbf](https://github.com/tmcw/dbf)
+A fork of [shp-write](https://www.npmjs.com/package/shp-write) with support for 3D-shapes.
+Intent is to contribute this to shp-write. Unless you need 3D support it is recommended to
+use shp-write instead.
+
+Writes shapefile in pure javascript. Uses [dbf](https://github.com/tmcw/dbf)
 for the data component, and [jsZIP](http://stuk.github.io/jszip/) to generate
 ZIP file downloads in-browser.
 
@@ -10,11 +14,7 @@ ZIP file downloads in-browser.
 
 For node.js or [browserify](https://github.com/substack/node-browserify)
 
-    npm install --save shp-write
-
-Or in a browser
-
-    https://unpkg.com/shp-write@latest/shpwrite.js
+    npm install --save @webprofijt/shp-write
 
 ## Caveats
 
