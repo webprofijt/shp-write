@@ -1,6 +1,6 @@
 {
   "name": "@gpcboekema/shp-write",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "write shapefiles from pure javascript",
   "main": "index.js",
   "scripts": {
@@ -27,10 +27,12 @@
     {
       "name": "Nick Baugh",
       "email": "niftylettuce@gmail.com"
-    },{
+    },
+    {
       "name": "Arnoud de Vries",
       "email": "arnoud@webprofijt.nl"
-    },{
+    },
+    {
       "name": "Gijs Boekema",
       "email": "gijsboekema007@gmail.com"
     }
