@@ -11,7 +11,10 @@ function justType(type, TYPE, just3d) {
         var ofDimension = ofType.filter(isOfDimension(TYPE, just3d));
 
         return {
-            geometries: oftype.map(justCoords),
+            geometries: (TYPE === 'POLYLINE' || TYPE === 'POLYLINEZ' ||
+                TYPE === 'POLYGON'  || TYPE === 'POLYGONZ') ?
+                [ofDimension.map(justCoords)] :
+                ofDimension.map(justCoords),
             properties: ofDimension.map(justProps),
             type: TYPE
         };
