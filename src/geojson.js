@@ -11,10 +11,7 @@ function justType(type, TYPE, just3d) {
         var ofDimension = ofType.filter(isOfDimension(TYPE, just3d));
 
         return {
-            geometries: (TYPE === 'POLYLINE' || TYPE === 'POLYLINEZ' ||
-                TYPE === 'POLYGON'  || TYPE === 'POLYGONZ') ?
-                [ofDimension.map(justCoords)] :
-                ofDimension.map(justCoords),
+            geometries: oftype.map(justCoords),
             properties: ofDimension.map(justProps),
             type: TYPE
         };
@@ -31,7 +28,7 @@ function justProps(t) {
 }
 
 function isType(t) {
-    return function(f) { return f.geometry.type === t; };
+    return function(f) { return f.geometry.type.replace('Multi', '') === t; };
 }
 
 function isOfDimension(TYPE, just3d) {
