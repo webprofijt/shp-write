@@ -52,7 +52,7 @@ module.exports.shxLength = function(coordinates) {
     return coordinates.length * 8;
 };
 
-module.exports.shpLength = function(coordinates) {
+module.exports.shpLength = function(coordinates, parts) {
     // header: 8 bytes + shape type (4 bytes) +
     // either 2 * 8 bytes (XY) or 4 * 8 bytes (XYZM)
     return coordinates.reduce(function(length, coordinate) {

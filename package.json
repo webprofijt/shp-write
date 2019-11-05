@@ -1,6 +1,6 @@
 {
-  "name": "@gpcboekema/shp-write",
-  "version": "0.4.2",
+  "name": "@jessyst/shp-write",
+  "version": "0.4.3",
   "description": "write shapefiles from pure javascript",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,10 @@
     {
       "name": "Gijs Boekema",
       "email": "gijsboekema007@gmail.com"
+    },
+    {
+      "name": "Jessy Steenbekkers",
+      "email": "info@jessys.nl"
     }
   ],
   "license": "BSD-2-Clause",
