@@ -12,7 +12,7 @@ function justType(type, TYPE, just3d) {
 
         return {
             geometries: (TYPE === 'POLYLINE' || TYPE === 'POLYLINEZ' ||
-                         TYPE === 'POLYGON'  || TYPE === 'POLYGONZ') ?
+                TYPE === 'POLYGON'  || TYPE === 'POLYGONZ') ?
                 [ofDimension.map(justCoords)] :
                 ofDimension.map(justCoords),
             properties: ofDimension.map(justProps),
@@ -22,14 +22,8 @@ function justType(type, TYPE, just3d) {
 }
 
 function justCoords(t) {
-    if (t.geometry.coordinates[0] !== undefined &&
-        t.geometry.coordinates[0][0] !== undefined &&
-        t.geometry.coordinates[0][0][0] !== undefined) {
-        // Unwraps rings
-        return t.geometry.coordinates[0];
-    } else {
-        return t.geometry.coordinates;
-    }
+    // See Issue #66
+    return t.geometry.coordinates;
 }
 
 function justProps(t) {
@@ -37,7 +31,7 @@ function justProps(t) {
 }
 
 function isType(t) {
-    return function(f) { return f.geometry.type === t; };
+    return function(f) { return f.geometry.type.replace('Multi', '') === t; };
 }
 
 function isOfDimension(TYPE, just3d) {

@@ -64,19 +64,18 @@ module.exports.write = function writePoints(geometries, extent, shpView, shxView
         }
 
         // Points
-        flattened.forEach(function writeLine(coords, i) {
-            shpView.setFloat64(shpI + 56 + (i * 16) + (noParts - 1) * 4, coords[0], true); // X
-            shpView.setFloat64(shpI + 56 + (i * 16) + (noParts - 1) * 4 + 8, coords[1], true); // Y
+        var lastIndex = shpI + 56;
+        flattened.forEach(function writeLine(coords, j) {
+            shpView.setFloat64(shpI + 56 + (j * 16) + (noParts - 1) * 4, coords[0], true); // X
+            shpView.setFloat64(shpI + 56 + (j * 16) + (noParts - 1) * 4 + 8, coords[1], true); // Y
+            lastIndex = shpI + 56 + (j * 16) + (noParts - 1) * 4 + 8 + 8;
         });
 
         if (is3d) {
-            // Byte position Y as in spec
-            var y = (shpI + 56 + (i * 16) + (noParts - 1) * 4) + 16 * flattened.length;
-
-            shpView.setFloat64(y, featureExtent.zmin, true);
-            shpView.setFloat64(y + 8, featureExtent.zmax, true);
+            shpView.setFloat64(lastIndex, featureExtent.zmin, true);
+            shpView.setFloat64(lastIndex + 8, featureExtent.zmax, true);
             flattened.forEach(function writeZArray(point, index) {
-                shpView.setFloat64(y + 16 + index * 8, point[2], true);
+                shpView.setFloat64(lastIndex + 16 + index * 8, point[2], true);
             });
         }
 
@@ -84,7 +83,7 @@ module.exports.write = function writePoints(geometries, extent, shpView, shxView
     }
 };
 
-module.exports.shpLength = function(geometries) {
+module.exports.shpLength = function(geometries, parts) {
     // NOTE: parts array length should not be included
     // as this is calculated in write.js
 
@@ -95,7 +94,7 @@ module.exports.shpLength = function(geometries) {
     return (geometries.length * 56) +
         // points
         (flattened.length * 16) +
-        (is3d ? 16 + flattened.length * 8 : 0);
+        (is3d ? ((parts * 16) + flattened.length * 8) : 0);
 };
 
 module.exports.shxLength = function(geometries) {
