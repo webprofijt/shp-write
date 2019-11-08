@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha -R spec",
     "prepublish": "npm run make",
-    "make": "browserify -s shpwrite ./ > shpwrite.js",
-    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
+    "make": "browserify -s shpwrite ./ > shpwrite.js"
   },
   "repository": {
     "type": "git",
