@@ -1,12 +1,13 @@
 {
   "name": "@gpcboekema/shp-write",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "write shapefiles from pure javascript",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec",
     "prepublish": "npm run make",
-    "make": "browserify -s shpwrite ./ > shpwrite.js"
+    "make": "browserify -s shpwrite ./ > shpwrite.js",
+    "postpublish" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
   },
   "repository": {
     "type": "git",
