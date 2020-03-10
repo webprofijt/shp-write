@@ -1,6 +1,6 @@
 [![Build Status](https://secure.travis-ci.org/mapbox/shp-write.svg?branch=master)](http://travis-ci.org/mapbox/shp-write)
 
-# @gpcboekema/shp-write
+# @cyclomedia/shp-write
 
 A fork of [shp-write](https://www.npmjs.com/package/shp-write) with support for 3D-shapes.
 Intent is to contribute this to shp-write. Unless you need 3D support it is recommended to
@@ -14,7 +14,7 @@ ZIP file downloads in-browser.
 
 For node.js or [browserify](https://github.com/substack/node-browserify)
 
-    npm install --save @gpcboekema/shp-write
+    npm install --save @cyclomedia/shp-write
 
 ## Caveats
 
